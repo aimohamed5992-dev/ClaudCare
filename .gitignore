@@ -1,0 +1,22 @@
+.DS_Store
+# web
+app/node_modules/
+app/dist/
+# backend
+backend/**/bin/
+backend/**/obj/
+*.user
+# flutter
+flutter/**/.dart_tool/
+flutter/**/build/
+flutter/**/.flutter-plugins*
+flutter/**/Pods/
+flutter/**/ios/Flutter/ephemeral/
+flutter/**/.gradle/
+flutter/**/local.properties
+# أسرار محلية
+.env*
+*.pem
+*.jks
+*.keystore
+key.properties

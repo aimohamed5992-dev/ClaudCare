@@ -1,0 +1,27 @@
+/* ---------- غرف العمليات ---------- */
+.orr { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--s-4); }
+.orr__card { display: flex; flex-direction: column; gap: var(--s-3); border-inline-start: 5px solid var(--line-strong); }
+.orr__card--green { border-inline-start-color: #12a150; }
+.orr__card--blue { border-inline-start-color: var(--blue); }
+.orr__card--orange { border-inline-start-color: var(--orange); }
+.orr__card--red { border-inline-start-color: #d92d20; }
+.orr__head { display: flex; justify-content: space-between; align-items: center; }
+.orr__note { color: var(--muted); margin: 0; }
+.orr__actions { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+
+/* ---------- قائمة ما قبل العملية ---------- */
+.pre { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap: var(--s-5); align-items: start; }
+.pre__main { display: flex; flex-direction: column; gap: var(--s-4); min-width: 0; }
+.pre__items { display: flex; flex-direction: column; gap: var(--s-3); }
+.pre__alert { display: flex; align-items: flex-start; gap: var(--s-3); background: var(--red-50); color: var(--red-text); border-radius: var(--r-md); padding: 12px 16px; }
+.pre__allergy { display: flex; align-items: center; gap: var(--s-3); background: var(--orange-50); color: var(--amber); border-radius: var(--r-md); padding: 10px 14px; }
+.pre__side { position: sticky; top: calc(var(--topbar-h) + var(--s-4)); }
+.pre__form { display: flex; flex-direction: column; gap: var(--s-4); margin-top: var(--s-4); }
+.pre__reasons { margin: 0; padding-inline-start: 18px; color: var(--red-text); font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 2px; }
+.pre__bar { height: 8px; border-radius: 99px; background: #eef1f6; overflow: hidden; }
+.pre__bar > span { display: block; height: 100%; background: var(--blue); transition: width .2s; }
+
+@media (max-width: 1000px) {
+  .pre { grid-template-columns: 1fr; }
+  .pre__side { position: static; }
+}

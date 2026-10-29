@@ -1,0 +1,20 @@
+/* ---------- إدخال النتيجة ---------- */
+.entry { display: flex; flex-direction: column; gap: var(--s-5); max-width: 960px; }
+.entry__head { display: flex; align-items: center; gap: var(--s-4); }
+.entry__head > div { flex: 1; display: flex; flex-direction: column; }
+.entry__head small { color: var(--muted); }
+.entry__input { width: 180px; }
+.entry__input .field__msg { font-size: var(--fs-xs); }
+.entry__dash { color: var(--muted); }
+.entry__foot { display: flex; align-items: center; justify-content: flex-end; gap: var(--s-3); padding: var(--s-4) var(--s-5); border-top: 1px solid var(--line); }
+.entry__sum { flex: 1; color: var(--muted); font-weight: 600; }
+.entry__sum.is-bad { color: var(--red-text); }
+
+/* ---------- الأجهزة ---------- */
+.devices { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--s-5); }
+.device { display: flex; flex-direction: column; gap: var(--s-3); }
+.device header { display: flex; align-items: center; gap: var(--s-3); }
+.device header > div { flex: 1; display: flex; flex-direction: column; line-height: 1.35; }
+.device header small { color: var(--muted); }
+.device__icon { width: 44px; height: 44px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue); display: grid; place-items: center; }
+.device .detail__list dd { display: inline-flex; }

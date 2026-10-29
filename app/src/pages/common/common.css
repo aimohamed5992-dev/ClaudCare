@@ -1,0 +1,31 @@
+/* ---------- الإشعارات ---------- */
+.notif { display: flex; flex-direction: column; gap: var(--s-5); max-width: 860px; }
+.notif__bar { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.notif__group { display: flex; flex-direction: column; gap: var(--s-3); }
+.notif__group h3 { font-size: var(--fs-md); color: var(--muted); font-weight: 600; }
+.notif__item { display: flex; align-items: stretch; border-bottom: 1px solid #f1f3f7; }
+.notif__item:last-child { border-bottom: 0; }
+.notif__item.is-unread { background: #f8fbff; }
+.notif__main { flex: 1; display: flex; align-items: flex-start; gap: var(--s-4); padding: var(--s-4) var(--s-5); text-align: start; min-width: 0; }
+.notif__main:hover { background: rgba(11, 85, 181, 0.03); }
+.notif__icon { width: 42px; height: 42px; border-radius: var(--r-md); display: grid; place-items: center; flex: none; }
+.notif__text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; line-height: 1.5; }
+.notif__text > span { color: var(--slate); font-size: 14px; }
+.notif__text small { color: var(--muted); }
+.notif__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--orange); flex: none; margin-top: 6px; }
+.notif__del { padding: 0 var(--s-4); color: var(--muted); display: grid; place-items: center; }
+.notif__del:hover { color: var(--red-text); background: var(--red-50); }
+
+/* ---------- الملف الشخصي ---------- */
+.prof { display: flex; flex-direction: column; gap: var(--s-5); max-width: 900px; }
+.prof__form { display: flex; flex-direction: column; gap: var(--s-5); }
+.prof__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.prof__bio { margin-top: var(--s-4); }
+.prof__photo { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.prof__pw { display: flex; flex-direction: column; gap: var(--s-4); max-width: 420px; }
+.prof__row { display: flex; align-items: center; gap: var(--s-4); }
+.prof__session { display: flex; align-items: center; gap: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 12px; }
+label.btn { cursor: pointer; }
+.prof .card .settings__switch { border-bottom: 0; padding: 0; }
+
+@media (max-width: 700px) { .prof__grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,21 @@
+.doc__picker { width: 220px; }
+
+/* ---------- الكشف الطبي ---------- */
+.consult { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 2.4fr); gap: var(--s-5); align-items: start; }
+.consult__side { position: sticky; top: calc(var(--topbar-h) + var(--s-4)); }
+.consult__who { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; margin-bottom: var(--s-4); }
+.consult__who small { color: var(--muted); }
+.consult__allergy { margin-top: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+.consult__allergy small { color: var(--muted); }
+.consult__main { display: flex; flex-direction: column; gap: var(--s-5); }
+.consult__form { display: flex; flex-direction: column; gap: var(--s-4); }
+.consult__form h4 { font-size: var(--fs-md); }
+.consult__rx { display: grid; grid-template-columns: 2fr 1.4fr 1fr auto; gap: var(--s-3); align-items: end; }
+.consult__item { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 14px; }
+.consult__item span { display: flex; flex-direction: column; }
+.consult__item small, .consult__hint { color: var(--muted); }
+.consult__checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--s-3); }
+.consult__foot { display: flex; justify-content: flex-end; gap: var(--s-3); border-top: 1px solid var(--line); padding-top: var(--s-4); }
+
+@media (max-width: 1000px) { .consult { grid-template-columns: 1fr; } .consult__side { position: static; } }
+@media (max-width: 700px) { .consult__rx { grid-template-columns: 1fr 1fr; } .doc__picker { width: 100%; } }

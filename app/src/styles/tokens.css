@@ -1,0 +1,70 @@
+/* ClaudCare design tokens – مستخرجة من الشعار. الخلفية بيضاء في المنصة كلها. */
+:root {
+  /* Brand */
+  --blue: #0b55b5;
+  --blue-600: #0a4a9e;
+  --sky: #0a98f5;
+  --orange: #f58a25;
+  --orange-600: #dd7616;
+  --slate: #3f4b5f;
+
+  /* Tints */
+  --blue-50: #eef5ff;
+  --blue-100: #dbe9ff;
+  --orange-50: #fff4ea;
+  --orange-100: #ffe5cc;
+
+  /* Neutrals (الخلفية دائمًا أبيض) */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --line: #e6eaf0;
+  --line-strong: #cfd6e2;
+  --muted: #5b6679;
+  --text: var(--slate);
+
+  /* Status */
+  --green: #16a34a;
+  --green-50: #e8f7ee;
+  --red: #dc2626;
+  --red-50: #fdecec;
+  --amber: #a85a0c;
+  --green-text: #11803a;
+  --red-text: #c81e1e;
+  --orange-text: #b85d0a;
+
+  /* Shape */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-pill: 999px;
+
+  /* Elevation – خفيفة جدًا للحفاظ على الشكل النظيف */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 10px 30px -18px rgba(11, 85, 181, 0.35);
+  --shadow-lg: 0 24px 60px -24px rgba(15, 23, 42, 0.35);
+
+  /* Spacing scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+
+  /* Type */
+  --font: 'Cairo', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+
+  /* Layout */
+  --sidebar-w: 260px;
+  --topbar-h: 72px;
+  --focus-ring: 0 0 0 4px rgba(10, 152, 245, 0.16);
+}

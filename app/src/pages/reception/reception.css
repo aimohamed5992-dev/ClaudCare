@@ -1,0 +1,26 @@
+/* ---------- تسجيل مريض ---------- */
+.reg { display: flex; flex-direction: column; gap: var(--s-5); max-width: 940px; }
+.reg__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); }
+.reg__notes { margin-top: var(--s-4); }
+.reg__actions { display: flex; gap: var(--s-3); flex-wrap: wrap; justify-content: center; }
+.reg__actions--end { justify-content: flex-end; }
+.reg__done { max-width: 520px; margin: var(--s-8) auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--s-3); padding: var(--s-8); }
+.reg__check { width: 72px; height: 72px; border-radius: 50%; background: var(--green-50); color: var(--green-text); display: grid; place-items: center; }
+.reg__done p { color: var(--muted); }
+
+/* ---------- قائمة الانتظار ---------- */
+.queue { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); align-items: start; }
+.queue__col { border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); background: #fff; }
+.queue__col header { display: flex; align-items: center; justify-content: space-between; }
+.queue__col h3 { font-size: var(--fs-lg); }
+.queue__card { border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); }
+.queue__top { display: flex; align-items: center; gap: var(--s-3); }
+.queue__top > div { display: flex; flex-direction: column; flex: 1; min-width: 0; line-height: 1.35; }
+.queue__top small { color: var(--muted); }
+.queue__ticket { font-weight: 800; color: var(--blue); background: var(--blue-50); border-radius: var(--r-sm); padding: 2px 8px; font-size: var(--fs-sm); }
+.queue__foot { display: flex; align-items: center; justify-content: space-between; }
+.queue__foot small { color: var(--muted); display: inline-flex; align-items: center; gap: 4px; }
+
+@media (max-width: 1000px) { .queue { grid-template-columns: 1fr; } }
+@media (max-width: 800px) { .reg__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .reg__grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClaudCare – UI Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0B55B5; --sky:#0A98F5; --orange:#F58A25; --slate:#3F4B5F;
+  --blue-50:#EEF5FF; --orange-50:#FFF4EA; --line:#E6EAF0; --muted:#7A8599; --green:#16A34A; --red:#DC2626;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0}
+html,body{background:#fff;color:var(--slate);font-family:'Cairo',system-ui,sans-serif}
+body{min-height:100vh}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.btn{padding:10px 20px;border-radius:10px;font-weight:700;transition:.15s}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{filter:brightness(.95)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ghost{border:1px solid var(--line);background:#fff}.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.ph{background:var(--blue-50);color:var(--blue);display:grid;place-items:center;font-weight:800;overflow:hidden}
+img.fill{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- Auth ---------- */
+.auth{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.auth-form{padding:48px 8%;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.auth-form img.logo{width:230px}
+.auth h1{font-size:30px;color:var(--blue);font-weight:800}
+.auth p.sub{color:var(--muted)}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:14px}
+.field input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;outline:0}
+.field input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(10,152,245,.12)}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.row a{color:var(--blue);font-weight:600;text-decoration:none}
+.auth-art{position:relative;background:var(--blue-50);margin:20px;border-radius:28px;overflow:hidden;display:grid;place-items:center}
+.auth-art .cap{position:absolute;bottom:28px;inset-inline:28px;background:#fff;border-radius:16px;padding:16px 20px;border:1px solid var(--line)}
+.auth-art .cap b{color:var(--blue)}
+.art-fallback{width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--blue-50) 60%);border:2px dashed var(--sky);display:grid;place-items:center;color:var(--sky);font-weight:700;text-align:center;padding:20px}
+
+/* ---------- Roles ---------- */
+.roles{padding:40px 6%}
+.roles header{text-align:center;margin-bottom:34px}
+.roles header img{width:210px;margin-bottom:10px}
+.roles h2{color:var(--blue);font-size:28px}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.role-card{border:1px solid var(--line);border-radius:20px;background:#fff;text-align:start;overflow:hidden;transition:.2s}
+.role-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(11,85,181,.45)}
+.role-card .img{height:150px;border-bottom:1px solid var(--line)}
+.role-card .body{padding:16px 18px}
+.role-card h3{color:var(--blue);font-size:18px}
+.role-card p{color:var(--muted);font-size:13px;margin-top:4px}
+
+/* ---------- App shell ---------- */
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.side{border-inline-end:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.side img.logo{width:170px;margin:0 auto 18px;display:block}
+.nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-weight:600;color:var(--slate);text-align:start;width:100%}
+.nav svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav:hover{background:var(--blue-50)}
+.nav.on{background:var(--blue);color:#fff}
+.side .spacer{flex:1}
+.who{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px}
+.who .av{width:40px;height:40px;border-radius:50%}
+.who small{color:var(--muted);display:block;font-size:12px}
+.main{padding:26px 34px 44px;min-width:0}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.top h1{font-size:26px;color:var(--blue);flex:1}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:9px 14px;width:280px;color:var(--muted)}
+.search input{border:0;outline:0;font:inherit;width:100%}
+.icon-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;position:relative}
+.icon-btn i{position:absolute;top:8px;inset-inline-end:9px;width:9px;height:9px;border-radius:50%;background:var(--orange);border:2px solid #fff}
+.banner{display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--line);border-radius:20px;padding:22px 28px;margin-bottom:22px;background:linear-gradient(100deg,var(--blue-50),#fff 70%)}
+.banner h2{color:var(--blue);font-size:22px}.banner p{color:var(--muted);margin:4px 0 14px}
+.banner .art{width:190px;height:120px;border-radius:14px;flex:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.stat{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.stat .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:10px}
+.stat .ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stat b{font-size:26px;display:block;line-height:1.1}
+.stat span{color:var(--muted);font-size:13px}
+.stat em{font-style:normal;font-size:12px;font-weight:700;float:inline-end}
+.up{color:var(--green)}.down{color:var(--red)}
+.cols{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h3{font-size:17px;color:var(--blue);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.card h3 a{font-size:13px;color:var(--orange);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:start;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line);font-size:13px}
+td{padding:12px 10px;border-bottom:1px solid #F1F3F7}
+tr:last-child td{border-bottom:0}
+.pp{display:flex;align-items:center;gap:10px;font-weight:600}
+.pp .av{width:34px;height:34px;border-radius:50%;flex:none;font-size:13px}
+.tag{padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.t-g{background:#E8F7EE;color:var(--green)}.t-o{background:var(--orange-50);color:#C46A10}.t-b{background:var(--blue-50);color:var(--blue)}.t-r{background:#FDECEC;color:var(--red)}
+.list{display:flex;flex-direction:column;gap:12px}
+.item{display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px}
+.item .dot{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;font-size:12px;font-weight:800}
+.item b{display:block;font-size:14px}.item small{color:var(--muted)}
+.bars{display:flex;align-items:flex-end;gap:10px;height:130px;margin-top:6px}
+.bars div{flex:1;background:var(--blue-50);border-radius:8px 8px 0 0;position:relative}
+.bars div.hi{background:var(--blue)}
+.bars div span{position:absolute;bottom:-22px;inset-inline:0;text-align:center;font-size:11px;color:var(--muted)}
+.empty{display:none;text-align:center;padding:50px 20px}
+.empty .art{width:200px;height:150px;margin:0 auto 14px;border-radius:16px}
+.switch{position:fixed;bottom:16px;inset-inline-start:16px;z-index:9;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;display:flex;gap:4px;box-shadow:0 10px 30px -15px rgba(0,0,0,.25)}
+.switch button{padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600}
+.switch button.on{background:var(--orange);color:#fff}
+.modal-bg{position:fixed;inset:0;background:rgba(15,23,42,.35);display:grid;place-items:center;z-index:20;padding:16px}
+.modal{background:#fff;border-radius:20px;width:min(560px,100%);padding:26px 28px;display:flex;flex-direction:column;gap:14px;max-height:92vh;overflow:auto}
+.modal h2{color:var(--blue)}
+.modal .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+.slots{display:flex;gap:8px;flex-wrap:wrap}
+.slots button{border:1px solid var(--line);border-radius:10px;padding:7px 14px;font-weight:600;font-size:13px}
+.slots button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:980px){.auth{grid-template-columns:1fr}.auth-art{display:none}.grid9{grid-template-columns:1fr 1fr}.app{grid-template-columns:1fr}.side{position:static;height:auto}.stats{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}.banner .art{display:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div class="switch" id="switch"></div>
+
+<script>
+/* ---- icons ---- */
+const I={
+ home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14c2.2.6 3.5 2.6 3.5 6"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',
+ file:'<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+ flask:'<path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 006.2 21h11.6a2 2 0 001.7-2.5L14 9V3"/>',
+ scan:'<path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3"/><path d="M4 12h16"/>',
+ heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.7A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/>',
+ bed:'<path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 00-3-3h-7v5"/><circle cx="7" cy="11" r="1.5"/>',
+ build:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/>',
+ branch:'<circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 7.5v9M8.5 5c5 0 7 3 7.5 5.5"/>',
+ cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+ chart:'<path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/>',
+ bell:'<path d="M6 17V11a6 6 0 0112 0v6l2 2H4z"/><path d="M10 21h4"/>',
+ search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>',
+ pill:'<rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(-35 12 12)"/><path d="M9.5 8.5l6 6"/>',
+ pulse:'<path d="M3 12h4l2-6 4 12 2-6h6"/>',
+ wallet:'<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M16 13h2M3 10h18"/>',
+ out:'<path d="M10 4H5a1 1 0 00-1 1v14a1 1 0 001 1h5M15 8l4 4-4 4M19 12H9"/>'
+};
+const ic=n=>`<svg viewBox="0 0 24 24">${I[n]}</svg>`;
+
+/* ---- image with graceful fallback ---- */
+const img=(src,txt,cls='')=>`<div class="ph ${cls}" style="width:100%;height:100%"><img class="fill" src="assets/${src}" alt="" onerror="this.remove()"><span style="position:absolute">${txt||''}</span></div>`;
+const av=(src,name,cls='av')=>`<div class="ph ${cls}" style="position:relative"><img class="fill" src="assets/avatars/${src}" onerror="this.remove()">${name[0]}</div>`;
+
+/* ---- roles ---- */
+const ROLES=[
+{k:'admin',n:'مدير النظام',d:'إدارة المنصة بالكامل والمستشفيات والاشتراكات',user:'أحمد الشريف',ava:'admin.jpg',
+ nav:[['home','الرئيسية'],['build','المستشفيات'],['users','المستخدمون'],['wallet','الاشتراكات والفواتير'],['chart','التقارير'],['cog','إعدادات النظام']],
+ hi:'نظرة شاملة على المنصة',sub:'12 مستشفى نشطة و 3 طلبات انضمام جديدة بانتظار المراجعة.',cta:'مراجعة الطلبات',
+ stats:[['build','المستشفيات','12','+2','blue'],['users','المستخدمون','4,820','+8%','orange'],['wallet','إيرادات الشهر','318 ألف','+12%','blue'],['bell','تذاكر الدعم','7','-3','orange']],
+ tt:'أحدث المستشفيات',cols:['المستشفى','المدينة','الفروع','الحالة'],
+ rows:[['مستشفى النور','الرياض','4',['نشط','g']],['مستشفى الأمل','جدة','2',['نشط','g']],['مركز الشفاء','الدمام','1',['قيد المراجعة','o']],['مستشفى السلام','المدينة','3',['موقوف','r']]],
+ st:'نشاط النظام',side:[['تسجيل مستشفى جديد','قبل 10 دقائق','NEW','b'],['ترقية باقة','قبل ساعة','UP','o'],['نسخة احتياطية','اليوم 03:00','OK','g']],
+ chart:['س','ح','ن','ث','ر','خ','ج'],ch:[40,55,48,70,62,85,74]},
+{k:'hospital',n:'المستشفى',d:'إدارة الفروع والأقسام والكوادر الطبية',user:'د. خالد العمر',ava:'admin.jpg',
+ nav:[['home','الرئيسية'],['branch','الفروع'],['heart','الأقسام'],['users','الكوادر'],['bed','الأسرّة'],['wallet','المالية'],['chart','التقارير']],
+ hi:'مستشفى النور',sub:'نسبة إشغال الأسرّة اليوم 78% عبر جميع الفروع.',cta:'عرض الفروع',
+ stats:[['branch','الفروع','4','','blue'],['users','الكوادر','236','+5','orange'],['bed','إشغال الأسرّة','78%','+4%','blue'],['wallet','إيراد اليوم','42 ألف','+9%','orange']],
+ tt:'أداء الفروع',cols:['الفرع','المدير','المرضى اليوم','الإشغال'],
+ rows:[['الفرع الرئيسي','د. سامي','312',['85%','o']],['فرع الشمال','د. ليلى','148',['70%','g']],['فرع الغرب','د. ياسر','96',['62%','g']],['فرع الشرق','د. هدى','121',['91%','r']]],
+ st:'تنبيهات',side:[['فرع الشرق قارب الامتلاء','الآن','!','r'],['طلب نقل مريض','قبل 20 د','↔','b'],['اعتماد إجازة','قبل ساعة','OK','g']],
+ chart:['س','ح','ن','ث','ر','خ','ج'],ch:[60,52,66,58,74,70,80]},
+{k:'branch',n:'الفرع',d:'تشغيل الفرع اليومي والمواعيد والموارد',user:'د. سامي الراشد',ava:'doc-m2.jpg',
+ nav:[['home','الرئيسية'],['cal','المواعيد'],['users','الأطباء والممرضون'],['bed','الغرف والأسرّة'],['flask','المختبر والأشعة'],['chart','التقارير']],
+ hi:'الفرع الرئيسي',sub:'لديك 312 زيارة اليوم و 14 حالة طارئة.',cta:'عرض الجدول',
+ stats:[['cal','مواعيد اليوم','312','+6%','blue'],['users','الطاقم الحاضر','58','','orange'],['bed','غرف شاغرة','23','-4','blue'],['pulse','حالات طارئة','14','+3','orange']],
+ tt:'جدول الأقسام اليوم',cols:['القسم','المناوب','المرضى','الانتظار'],
+ rows:[['الطوارئ','د. فهد','46',['12 د','o']],['الباطنة','د. منى','88',['25 د','o']],['الأطفال','د. ريم','64',['8 د','g']],['العظام','د. زياد','37',['40 د','r']]],
+ st:'المهام',side:[['اعتماد جدول المناوبات','اليوم','1','b'],['طلب صيانة جهاز أشعة','أمس','2','o'],['مراجعة شكوى','أمس','3','r']],
+ chart:['8','10','12','14','16','18','20'],ch:[30,60,80,66,72,50,34]},
+{k:'lab',n:'المختبر',d:'استقبال العينات وإدخال النتائج',user:'م. سلمى حسن',ava:'lab-tech.jpg',
+ nav:[['home','الرئيسية'],['flask','طلبات التحاليل'],['file','النتائج'],['pill','العينات'],['chart','الجودة'],['cog','الأجهزة']],
+ hi:'مختبر الفرع الرئيسي',sub:'38 طلب تحليل بانتظار الإدخال، 5 منها عاجلة.',cta:'بدء الإدخال',
+ stats:[['flask','طلبات اليوم','126','+10%','blue'],['pill','عينات مستلمة','98','','orange'],['file','نتائج جاهزة','74','+14','blue'],['bell','عاجل','5','','orange']],
+ tt:'طلبات التحاليل',cols:['المريض','التحليل','الطبيب','الحالة'],
+ rows:[['محمد علي','صورة دم كاملة','د. منى',['عاجل','r']],['سارة أحمد','سكر تراكمي','د. فهد',['قيد التحليل','o']],['يوسف خالد','وظائف كبد','د. ريم',['جاهز','g']],['نورة سعد','هرمون الغدة','د. زياد',['بانتظار العينة','b']]],
+ st:'حالة الأجهزة',side:[['محلل الكيمياء','يعمل','OK','g'],['جهاز الدم','معايرة','!','o'],['الطرد المركزي','يعمل','OK','g']],
+ chart:['8','10','12','14','16','18','20'],ch:[25,60,85,70,55,40,20]},
+{k:'radiology',n:'الأشعة',d:'طلبات التصوير وقراءة التقارير',user:'د. عمر الخطيب',ava:'radiologist.jpg',
+ nav:[['home','الرئيسية'],['scan','طلبات التصوير'],['file','التقارير'],['cal','جدول الأجهزة'],['chart','الإحصائيات']],
+ hi:'قسم الأشعة',sub:'21 فحصًا بانتظار كتابة التقرير.',cta:'كتابة تقرير',
+ stats:[['scan','فحوصات اليوم','64','+7%','blue'],['file','تقارير معلقة','21','','orange'],['pulse','رنين مغناطيسي','12','','blue'],['bell','عاجل','3','','orange']],
+ tt:'قائمة الفحوصات',cols:['المريض','الفحص','الجهاز','الحالة'],
+ rows:[['علي حسن','أشعة صدر','X-Ray 1',['بانتظار التقرير','o']],['ليلى كريم','رنين مخ','MRI',['قيد التصوير','b']],['سعيد ناصر','مقطعية بطن','CT',['مكتمل','g']],['هند ماجد','سونار','US 2',['عاجل','r']]],
+ st:'الأجهزة',side:[['MRI','متاح','OK','g'],['CT','قيد الاستخدام','•','o'],['X-Ray 1','متاح','OK','g']],
+ chart:['8','10','12','14','16','18','20'],ch:[35,50,70,80,60,45,30]},
+{k:'doctor',n:'الطبيب',d:'المرضى والاستشارات والوصفات',user:'د. منى القاسم',ava:'doc-f1.jpg',
+ nav:[['home','الرئيسية'],['cal','مواعيدي'],['users','مرضاي'],['file','السجلات الطبية'],['pill','الوصفات'],['flask','الفحوصات'],['bell','الرسائل']],
+ hi:'صباح الخير د. منى',sub:'لديك 12 موعدًا اليوم، التالي بعد 15 دقيقة.',cta:'بدء الكشف',
+ stats:[['cal','مواعيد اليوم','12','','blue'],['users','مرضى جدد','4','+1','orange'],['flask','نتائج جاهزة','9','','blue'],['pill','وصفات','17','+3','orange']],
+ tt:'مواعيد اليوم',cols:['المريض','السبب','الوقت','الحالة'],
+ rows:[['محمد علي','متابعة سكري','09:00',['بالانتظار','o']],['سارة أحمد','ألم صدر','09:30',['حاضر','g']],['يوسف خالد','كشف جديد','10:00',['مجدول','b']],['نورة سعد','نتائج تحاليل','10:30',['مجدول','b']]],
+ st:'نتائج بحاجة لمراجعة',side:[['صورة دم – محمد علي','قبل ساعة','CBC','r'],['أشعة صدر – سارة','قبل 3 ساعات','XR','o'],['سكر تراكمي – يوسف','أمس','LAB','g']],
+ chart:['س','ح','ن','ث','ر','خ','ج'],ch:[50,70,60,80,65,40,25]},
+{k:'nurse',n:'الممرض/ة',d:'العلامات الحيوية ومتابعة المرضى',user:'نادين يوسف',ava:'nurse-f1.jpg',
+ nav:[['home','الرئيسية'],['bed','المرضى بالقسم'],['pulse','العلامات الحيوية'],['pill','الأدوية'],['file','ملاحظات التمريض'],['cal','المناوبات']],
+ hi:'مناوبة الصباح',sub:'8 مرضى تحتاج علاماتهم الحيوية تسجيلًا خلال ساعة.',cta:'تسجيل علامات',
+ stats:[['bed','مرضى القسم','18','','blue'],['pulse','علامات مطلوبة','8','','orange'],['pill','جرعات قادمة','11','','blue'],['bell','نداءات','2','','orange']],
+ tt:'مرضى القسم',cols:['المريض','الغرفة','آخر قياس','الحالة'],
+ rows:[['خالد منصور','204','07:30',['مستقر','g']],['ريم عادل','206','07:10',['مراقبة','o']],['فؤاد سالم','210','06:50',['حرج','r']],['ليان طارق','212','07:40',['مستقر','g']]],
+ st:'جرعات قادمة',side:[['أنسولين – غرفة 204','08:30','💉','b'],['مضاد حيوي – 206','09:00','💊','o'],['مسكن – 210','09:15','💊','r']],
+ chart:['6','8','10','12','14','16','18'],ch:[40,75,55,68,50,60,35]},
+{k:'reception',n:'الاستقبال',d:'تسجيل المرضى والمواعيد والدفع',user:'هبة ناصر',ava:'reception-f1.jpg',
+ nav:[['home','الرئيسية'],['users','تسجيل مريض'],['cal','الحجوزات'],['wallet','الفواتير'],['bed','قائمة الانتظار']],
+ hi:'مرحبًا هبة',sub:'27 مريضًا في قائمة الانتظار الآن.',cta:'تسجيل مريض جديد',
+ stats:[['users','زيارات اليوم','184','+5%','blue'],['cal','حجوزات قادمة','63','','orange'],['bed','بالانتظار','27','','blue'],['wallet','تحصيل اليوم','18 ألف','+8%','orange']],
+ tt:'قائمة الانتظار',cols:['المريض','العيادة','الوصول','الحالة'],
+ rows:[['عبدالله ناصر','الباطنة','08:40',['بالانتظار','o']],['مريم يوسف','الأطفال','08:55',['داخل العيادة','b']],['صالح أحمد','العظام','09:05',['بالانتظار','o']],['دانة خالد','الجلدية','09:10',['تم الدفع','g']]],
+ st:'إجراءات سريعة',side:[['حجز موعد','','+','o'],['تسجيل وصول','','✓','g'],['إصدار فاتورة','','$','b']],
+ chart:['8','10','12','14','16','18','20'],ch:[30,70,85,60,66,48,28]},
+{k:'patient',n:'المريض',d:'مواعيدي ونتائجي وسجلي الصحي',user:'ريم العلي',ava:'patient-2.jpg',
+ nav:[['home','الرئيسية'],['cal','مواعيدي'],['file','سجلي الصحي'],['flask','نتائج التحاليل'],['scan','الأشعة'],['pill','الأدوية'],['wallet','الفواتير']],
+ hi:'أهلًا ريم',sub:'موعدك القادم مع د. منى غدًا الساعة 10:30 صباحًا.',cta:'حجز موعد جديد',
+ stats:[['cal','مواعيد قادمة','2','','blue'],['flask','نتائج جديدة','3','','orange'],['pill','أدوية حالية','4','','blue'],['wallet','مستحقات','0','','orange']],
+ tt:'زياراتي الأخيرة',cols:['التاريخ','الطبيب','القسم','الحالة'],
+ rows:[['12 أكتوبر','د. منى القاسم','الباطنة',['مكتملة','g']],['02 أكتوبر','د. فهد عمر','القلب',['مكتملة','g']],['20 سبتمبر','م. سلمى','مختبر',['نتيجة جاهزة','b']],['05 سبتمبر','د. ريم','الأطفال',['مكتملة','g']]],
+ st:'مؤشراتي',side:[['ضغط الدم','120/80','♥','g'],['السكر','98 mg','●','b'],['الوزن','64 كجم','kg','o']],
+ chart:['ن','د','ي','ف','م','أ','س'],ch:[60,58,62,55,57,52,50]}
+];
+
+const $=s=>document.querySelector(s);
+let state={screen:'auth',role:'doctor',page:0};
+
+function auth(){return `
+<div class="auth">
+ <div class="auth-form">
+  <img class="logo" src="assets/logo.png" alt="ClaudCare">
+  <div><h1>تسجيل الدخول</h1><p class="sub">مرحبًا بعودتك، أدخل بياناتك للمتابعة.</p></div>
+  <div class="field"><label>البريد الإلكتروني أو رقم الجوال</label><input placeholder="name@hospital.com"></div>
+  <div class="field"><label>كلمة المرور</label><input type="password" value="••••••••"></div>
+  <div class="row"><label><input type="checkbox" checked> تذكرني</label><a href="#">نسيت كلمة المرور؟</a></div>
+  <button class="btn btn-primary" onclick="go('roles')">دخول</button>
+ </div>
+ <div class="auth-art">
+  <div class="art-fallback">ضع الصورة هنا<br>assets/auth/auth-hero.jpg</div>
+  <img class="fill" style="position:absolute;inset:0" src="assets/auth/auth-hero.jpg" onerror="this.remove()">
+  <div class="cap"><b>رعاية صحية ذكية في مكان واحد</b><br><small style="color:var(--muted)">إدارة المستشفى والفروع والمرضى بسهولة وأمان.</small></div>
+ </div>
+</div>`}
+
+function roles(){return `
+<div class="roles">
+ <header><img src="assets/logo.png" alt=""><h2>اختر نوع الحساب</h2><p style="color:var(--muted)">سيتم تخصيص لوحة التحكم حسب دورك.</p></header>
+ <div class="grid9">${ROLES.map(r=>`
+  <button class="role-card" onclick="openRole('${r.k}')">
+   <div class="img">${img('roles/role-'+r.k+'.png','')}</div>
+   <div class="body"><h3>${r.n}</h3><p>${r.d}</p></div>
+  </button>`).join('')}</div>
+</div>`}
+
+function app(){
+ const r=ROLES.find(x=>x.k===state.role);
+ const tagc=c=>({g:'t-g',o:'t-o',b:'t-b',r:'t-r'}[c]);
+ const cell=(c,i)=>Array.isArray(c)?`<span class="tag ${tagc(c[1])}">${c[0]}</span>`:(i===0?`<div class="pp">${av('',c)}${c}</div>`:c);
+ const max=Math.max(...r.ch);
+ return `
+<div class="app">
+ <aside class="side">
+  <img class="logo" src="assets/logo.png" alt="">
+  ${r.nav.map((n,i)=>`<button class="nav ${i===state.page?'on':''}" onclick="setPage(${i})">${ic(n[0])}${n[1]}</button>`).join('')}
+  <div class="spacer"></div>
+  <div class="who">${av(r.ava,r.user)}<div><b style="font-size:14px">${r.user}</b><small>${r.n}</small></div></div>
+  <button class="nav" onclick="go('roles')">${ic('out')}تغيير الحساب</button>
+ </aside>
+ <main class="main">
+  <div class="top"><h1>${r.nav[state.page][1]}</h1>
+   <div class="search">${ic('search').replace('<svg','<svg width="18" height="18" stroke="currentColor" fill="none" stroke-width="1.8"')}<input placeholder="بحث..."></div>
+   <button class="icon-btn">${ic('bell').replace('<svg','<svg width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.8"')}<i></i></button>
+  </div>
+  ${state.page>0?inner(r,tagc,cell):`
+  <div class="banner"><div><h2>${r.hi}</h2><p>${r.sub}</p><button class="btn btn-primary" onclick="state.modal=1;render()">${r.cta}</button></div>
+   <div class="art">${img('roles/role-'+r.k+'.png','')}</div></div>
+  <div class="stats">${r.stats.map(s=>`
+   <div class="stat"><div class="ic" style="background:var(--${s[4]==='blue'?'blue-50':'orange-50'});color:var(--${s[4]==='blue'?'blue':'orange'})">${ic(s[0])}</div>
+   ${s[3]?`<em class="${s[3].startsWith('-')?'down':'up'}">${s[3]}</em>`:''}<b>${s[2]}</b><span>${s[1]}</span></div>`).join('')}</div>
+  <div class="cols">
+   <div class="card"><h3>${r.tt}<a href="#">عرض الكل</a></h3>
+    <table><thead><tr>${r.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead>
+    <tbody>${r.rows.map(row=>`<tr>${row.map((c,i)=>`<td>${cell(c,i)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+   <div class="card"><h3>${r.st}</h3><div class="list">${r.side.map(s=>`
+    <div class="item"><div class="dot ${tagc(s[3])}">${s[2]}</div><div><b>${s[0]}</b><small>${s[1]}</small></div></div>`).join('')}</div></div>
+  </div>
+  <div class="card" style="margin-top:18px"><h3>النشاط خلال الأسبوع</h3>
+   <div class="bars" style="margin-bottom:24px">${r.ch.map((v,i)=>`<div class="${v===max?'hi':''}" style="height:${v/max*100}%"><span>${r.chart[i]}</span></div>`).join('')}</div></div>`}
+ </main>
+</div>`}
+
+function inner(r,tagc,cell){
+ const title=r.nav[state.page][1];
+ const rows=[...r.rows,...r.rows].map((x,i)=>x.map((c,j)=>j===0&&i>=r.rows.length?c+' ٢':c));
+ const sel=rows[state.sel||0];
+ const viewer=r.k==='radiology'||r.k==='lab';
+ const vimg=r.k==='radiology'?'xray-chest.png':'lab-samples.jpg';
+ const detail=viewer?`
+  <div class="card"><h3>${r.k==='radiology'?'عارض الصور':'نتيجة التحليل'}</h3>
+   <div style="aspect-ratio:1;border-radius:14px;background:#0F172A;position:relative;overflow:hidden;display:grid;place-items:center;color:#94A3B8;font-size:13px;text-align:center">
+    <img class="fill" style="position:absolute;inset:0" src="assets/medical/${vimg}" onerror="this.remove()">
+    <span>${vimg}</span></div>
+   <div style="display:flex;gap:8px;margin:12px 0">${['تكبير','تباين','قياس','مقارنة'].map(t=>`<button class="btn btn-ghost" style="flex:1;padding:7px;font-size:12px">${t}</button>`).join('')}</div>
+   <div class="field"><label>التقرير</label><input placeholder="اكتب الملاحظات هنا..."></div>
+   <button class="btn btn-primary" style="width:100%;margin-top:12px">اعتماد وإرسال</button></div>`:`
+  <div class="card"><h3>تفاصيل</h3>
+   <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px">${av('patient-3.jpg',sel[0],'av')}
+    <div><b>${sel[0]}</b><small style="display:block;color:var(--muted)">${sel[1]} • ${sel[2]}</small></div></div>
+   <div class="list">${[['الحالة',sel[3][0]],['آخر زيارة','12 أكتوبر'],['فصيلة الدم','O+'],['الحساسية','لا يوجد']].map(([a,b])=>`<div class="item"><div><small>${a}</small><b>${b}</b></div></div>`).join('')}</div>
+   <button class="btn btn-blue" style="width:100%;margin-top:14px">فتح الملف</button></div>`;
+ return `
+ <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+  ${['الكل','اليوم','قيد الانتظار','مكتمل'].map((t,i)=>`<button class="btn ${i===0?'btn-blue':'btn-ghost'}" style="padding:7px 16px">${t}</button>`).join('')}
+  <span style="flex:1"></span><button class="btn btn-primary" onclick="state.modal=1;render()">+ إضافة جديد</button></div>
+ <div class="cols"><div class="card"><h3>${title}</h3>
+  <table><thead><tr>${r.cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead>
+  <tbody>${rows.map((row,i)=>`<tr onclick="state.sel=${i};render()" style="cursor:pointer;${(state.sel||0)===i?'background:var(--blue-50)':''}">${row.map((c,j)=>`<td>${cell(c,j)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  ${detail}</div>`;
+}
+function modal(){return `
+<div class="modal-bg" onclick="if(event.target===this){state.modal=0;render()}">
+ <div class="modal">
+  <h2>حجز موعد جديد</h2>
+  <div class="field"><label>اسم المريض</label><input placeholder="ابحث أو أدخل الاسم"></div>
+  <div class="two">
+   <div class="field"><label>القسم</label><select><option>الباطنة</option><option>القلب</option><option>الأطفال</option><option>العظام</option></select></div>
+   <div class="field"><label>الطبيب</label><select><option>د. منى القاسم</option><option>د. فهد عمر</option></select></div>
+  </div>
+  <div class="field"><label>التاريخ</label><input type="date"></div>
+  <div class="field"><label>الوقت المتاح</label><div class="slots">${['09:00','09:30','10:00','10:30','11:00','11:30'].map((t,i)=>`<button class="${i===3?'on':''}">${t}</button>`).join('')}</div></div>
+  <div class="field"><label>ملاحظات</label><input placeholder="سبب الزيارة"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px">
+   <button class="btn btn-ghost" onclick="state.modal=0;render()">إلغاء</button>
+   <button class="btn btn-primary" onclick="state.modal=0;render()">تأكيد الحجز</button></div>
+ </div></div>`}
+function render(){
+ $('#root').innerHTML=(state.screen==='auth'?auth():state.screen==='roles'?roles():app())+(state.modal?modal():'');
+ $('#switch').innerHTML=[['auth','الدخول'],['roles','الأدوار']].map(([k,t])=>`<button class="${state.screen===k?'on':''}" onclick="go('${k}')">${t}</button>`).join('')+
+  ROLES.map(r=>`<button class="${state.screen==='app'&&state.role===r.k?'on':''}" onclick="openRole('${r.k}')">${r.n}</button>`).join('');
+ window.scrollTo(0,0);
+}
+function go(s){state.screen=s;state.modal=0;render()}
+function openRole(k){state={screen:'app',role:k,page:0,sel:0};render()}
+function setPage(i){state.page=i;state.sel=0;render()}
+render();
+</script>
+</body>
+</html>

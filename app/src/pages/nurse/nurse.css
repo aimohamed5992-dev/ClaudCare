@@ -1,0 +1,31 @@
+/* ---------- العلامات الحيوية ---------- */
+.vitals { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(0, 1.6fr); gap: var(--s-5); align-items: start; }
+.vitals__form { display: flex; flex-direction: column; gap: var(--s-4); }
+.vitals__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.vitals__alert { border-radius: var(--r-md); padding: 10px 14px; font-weight: 600; font-size: 14px; }
+.vitals__alert.is-bad { background: var(--red-50); color: var(--red-text); }
+.vitals__alert.is-ok { background: var(--green-50); color: var(--green-text); }
+.vitals__saved { color: var(--green-text); font-weight: 600; margin-top: var(--s-3); }
+.vitals__flags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- الأدوية ---------- */
+.meds-nurse { display: flex; flex-direction: column; gap: var(--s-5); }
+.meds-nurse .dash__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ---------- الملاحظات ---------- */
+.notes { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(0, 1.6fr); gap: var(--s-5); align-items: start; }
+.notes__form { display: flex; flex-direction: column; gap: var(--s-4); }
+.notes__list { display: flex; flex-direction: column; gap: var(--s-4); }
+.note header { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+.note header span { display: flex; flex-direction: column; flex: 1; line-height: 1.35; }
+.note header small { color: var(--muted); }
+.note p { line-height: 1.8; }
+
+/* ---------- المناوبات ---------- */
+.shifts { display: flex; flex-direction: column; gap: var(--s-4); }
+.shifts__legend { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+.shifts__table th, .shifts__table td { text-align: center; }
+.shifts__table th:first-child, .shifts__table td:first-child { text-align: start; }
+
+@media (max-width: 1000px) { .vitals, .notes { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .meds-nurse .dash__stats { grid-template-columns: 1fr; } }

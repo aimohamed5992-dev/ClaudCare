@@ -1,0 +1,27 @@
+/* ---------- صرف الدواء ---------- */
+.disp { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap: var(--s-5); align-items: start; }
+.disp__main { display: flex; flex-direction: column; gap: var(--s-4); min-width: 0; }
+.disp__head { display: flex; align-items: center; gap: var(--s-4); }
+.disp__head > div { flex: 1; display: flex; flex-direction: column; }
+.disp__head small { color: var(--muted); }
+.disp__allergy { display: flex; align-items: center; gap: var(--s-3); background: var(--red-50); color: var(--red-text); border-radius: var(--r-md); padding: 12px 16px; }
+.disp__item { display: flex; flex-direction: column; gap: var(--s-3); }
+.disp__item.is-bad { border-color: #f3b4b4; }
+.disp__item.is-skipped { opacity: 0.65; }
+.disp__row { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.disp__icon { width: 44px; height: 44px; border-radius: var(--r-md); background: var(--orange-50); color: var(--orange-text); display: grid; place-items: center; flex: none; }
+.disp__name { flex: 1; min-width: 180px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.4; }
+.disp__name small { color: var(--muted); }
+.disp__qty { display: flex; flex-direction: column; gap: 2px; width: 84px; }
+.disp__qty small { color: var(--muted); font-size: var(--fs-xs); }
+.disp__qty input { border: 1px solid var(--line-strong); border-radius: var(--r-sm); padding: 7px 10px; text-align: center; outline: 0; width: 100%; }
+.disp__qty input:focus { border-color: var(--sky); box-shadow: var(--focus-ring); }
+.disp__qty input:disabled { background: #f7f8fa; }
+.disp__warn { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); flex-wrap: wrap; background: var(--orange-50); border-radius: var(--r-md); padding: 10px 14px; font-size: 14px; }
+.disp__actions { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.disp__actions:empty { display: none; }
+.disp__side { position: sticky; top: calc(var(--topbar-h) + var(--s-4)); }
+.disp__form { display: flex; flex-direction: column; gap: var(--s-4); margin-top: var(--s-4); }
+.disp__reasons { margin: 0; padding-inline-start: 18px; color: var(--red-text); font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 2px; }
+
+@media (max-width: 1000px) { .disp { grid-template-columns: 1fr; } .disp__side { position: static; } }

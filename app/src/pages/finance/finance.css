@@ -1,0 +1,30 @@
+/* ---------- تحصيل فاتورة ---------- */
+.col { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap: var(--s-5); align-items: start; }
+.col__main { display: flex; flex-direction: column; gap: var(--s-4); min-width: 0; }
+.col__head { display: flex; align-items: center; gap: var(--s-4); }
+.col__head > div { flex: 1; display: flex; flex-direction: column; }
+.col__head small { color: var(--muted); }
+.col__form { display: flex; flex-direction: column; gap: var(--s-4); }
+.col__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.col__side { position: sticky; top: calc(var(--topbar-h) + var(--s-4)); }
+.col__reasons { margin: 0; padding-inline-start: 18px; color: var(--red-text); font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 2px; }
+.col__big { font-size: var(--fs-xl, 24px); font-weight: 800; color: var(--blue); }
+
+/* ---------- الإقفال اليومي ---------- */
+.close { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap: var(--s-5); align-items: start; }
+.close__main { display: flex; flex-direction: column; gap: var(--s-4); min-width: 0; }
+.close__line { display: grid; grid-template-columns: minmax(0, 1.3fr) 1fr minmax(0, 1fr); gap: var(--s-4); align-items: end; }
+.close__line > div { display: flex; flex-direction: column; line-height: 1.4; }
+.close__line small { color: var(--muted); }
+.close__diff { font-weight: 700; }
+.close__diff.is-ok { color: var(--green-text); }
+.close__diff.is-bad { color: var(--red-text); }
+.close__side { position: sticky; top: calc(var(--topbar-h) + var(--s-4)); }
+.close__form { display: flex; flex-direction: column; gap: var(--s-4); margin-top: var(--s-4); }
+
+@media (max-width: 1000px) {
+  .col, .close { grid-template-columns: 1fr; }
+  .col__side, .close__side { position: static; }
+  .close__line { grid-template-columns: 1fr; }
+  .col__row { grid-template-columns: 1fr; }
+}

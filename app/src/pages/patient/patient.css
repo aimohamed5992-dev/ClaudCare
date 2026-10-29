@@ -1,0 +1,45 @@
+/* ---------- السجل الصحي ---------- */
+.rec { display: flex; flex-direction: column; gap: var(--s-5); }
+.rec__profile { display: flex; align-items: center; gap: var(--s-5); flex-wrap: wrap; }
+.rec__id { flex: 1; min-width: 200px; display: flex; flex-direction: column; }
+.rec__id small { color: var(--muted); }
+.rec__vitals { display: flex; gap: var(--s-6); margin: 0; }
+.rec__vitals div { text-align: center; }
+.rec__vitals dt { color: var(--muted); font-size: var(--fs-xs); }
+.rec__vitals dd { margin: 0; font-weight: 800; font-size: var(--fs-xl); color: var(--blue); }
+.rec__two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+.rec__tags { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.rec__row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f3f7; }
+.rec__row small { color: var(--muted); }
+.timeline { list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--s-5); position: relative; }
+.timeline li { display: flex; gap: var(--s-4); position: relative; }
+.timeline li::before { content: ''; position: absolute; inset-inline-start: 6px; top: 18px; bottom: -22px; width: 2px; background: var(--line); }
+.timeline li:last-child::before { display: none; }
+.timeline i { width: 14px; height: 14px; border-radius: 50%; background: var(--blue); border: 3px solid var(--blue-100); margin-top: 6px; flex: none; z-index: 1; box-sizing: content-box; }
+.timeline div { display: flex; flex-direction: column; }
+.timeline small { color: var(--muted); }
+.timeline p { color: var(--slate); margin-top: 2px; }
+
+/* ---------- قائمة + عارض ---------- */
+.split { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr); gap: var(--s-5); align-items: start; }
+.pick { display: flex; align-items: center; gap: var(--s-3); width: 100%; text-align: start; border: 1px solid var(--line); border-radius: var(--r-md); padding: 12px; background: #fff; transition: 0.15s; }
+.pick:hover { border-color: var(--blue); }
+.pick.is-on { border-color: var(--blue); background: var(--blue-50); }
+.pick__icon { width: 40px; height: 40px; border-radius: var(--r-md); background: var(--blue-50); color: var(--blue); display: grid; place-items: center; flex: none; }
+.pick.is-on .pick__icon { background: #fff; }
+.pick__text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.pick__text small { color: var(--muted); }
+
+/* ---------- الأدوية ---------- */
+.meds { display: flex; flex-direction: column; gap: var(--s-5); }
+.meds .dash__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.meds__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--s-5); }
+.med__head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+.med__head > div { display: flex; flex-direction: column; line-height: 1.35; }
+.med__head small { color: var(--muted); }
+.med__icon { width: 44px; height: 44px; border-radius: var(--r-md); background: var(--orange-50); color: var(--orange); display: grid; place-items: center; }
+.med dd { display: inline-flex; align-items: center; gap: var(--s-2); }
+.med__foot { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); margin-top: var(--s-4); }
+
+@media (max-width: 1000px) { .split, .rec__two { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .meds .dash__stats { grid-template-columns: 1fr; } .rec__vitals { gap: var(--s-4); } }
